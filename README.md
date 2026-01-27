@@ -58,12 +58,16 @@ API REST en **.NET Core** con arquitectura por capas + CQRS para gestionar **Pro
 - `PUT /api/tasks/{id}/status`
 - Tests de negocio (integration o SP directo)
 
-## Ejecutar
+dotnet restore
+dotnet build
+dotnet run --project Api/Api
+
+#script sql IMPORTANTE :
 ```bash
 dotnet restore
 dotnet build
 dotnet run --project Api/Api
-#script sql IMPORTANTE :
+
 USE [TeamTasksSample]
 GO
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

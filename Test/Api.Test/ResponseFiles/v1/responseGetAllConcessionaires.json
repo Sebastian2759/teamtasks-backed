@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+    "Nombre": "Sede Principal"
+  },
+  {
+    "Id": "e290f1ee-6c54-4b01-90e6-d701748f0852",
+    "Nombre": "Sede Secundaria"
+  },
+  {
+    "Id": "f290f1ee-6c54-4b01-90e6-d701748f0853",
+    "Nombre": "Sede Tercera"
+  },
+  {
+    "Id": "g290f1ee-6c54-4b01-90e6-d701748f0854",
+    "Nombre": "Sede Cuarta"
+  },
+  {
+    "Id": "h290f1ee-6c54-4b01-90e6-d701748f0855",
+    "Nombre": "Sede Quinta"
+  },
+  {
+    "Id": "i290f1ee-6c54-4b01-90e6-d701748f0856",
+    "Nombre": "Sede Sexta"
+  },
+  {
+    "Id": "j290f1ee-6c54-4b01-90e6-d701748f0857",
+    "Nombre": "Sede Séptima"
+  },
+  {
+    "Id": "k290f1ee-6c54-4b01-90e6-d701748f0858",
+    "Nombre": "Sede Octava"
+  },
+  {
+    "Id": "l290f1ee-6c54-4b01-90e6-d701748f0859",
+    "Nombre": "Sede Novena"
+  },
+  {
+    "Id": "m290f1ee-6c54-4b01-90e6-d701748f0860",
+    "Nombre": "Sede Décima"
+  }
+]

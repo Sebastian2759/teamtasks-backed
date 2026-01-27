@@ -1,0 +1,42 @@
+[
+  {
+    "EconomicActivityCode": "EAC001",
+    "ActivityType": "Agriculture"
+  },
+  {
+    "EconomicActivityCode": "EAC002",
+    "ActivityType": "Banking"
+  },
+  {
+    "EconomicActivityCode": "EAC003",
+    "ActivityType": "Consulting"
+  },
+  {
+    "EconomicActivityCode": "EAC004",
+    "ActivityType": "Education"
+  },
+  {
+    "EconomicActivityCode": "EAC005",
+    "ActivityType": "Energy"
+  },
+  {
+    "EconomicActivityCode": "EAC006",
+    "ActivityType": "Engineering"
+  },
+  {
+    "EconomicActivityCode": "EAC007",
+    "ActivityType": "Healthcare"
+  },
+  {
+    "EconomicActivityCode": "EAC008",
+    "ActivityType": "Information Technology"
+  },
+  {
+    "EconomicActivityCode": "EAC009",
+    "ActivityType": "Manufacturing"
+  },
+  {
+    "EconomicActivityCode": "EAC010",
+    "ActivityType": "Retail"
+  }
+]

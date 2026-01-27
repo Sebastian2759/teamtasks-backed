@@ -1,0 +1,52 @@
+[
+  {
+    "Id": "c3fcd3d7-960b-4c7b-8b9e-41a38b31f981",
+    "NombreUsuario": "usuario1",
+    "Correo": "usuario1@correo.com"
+  },
+  {
+    "Id": "0d87e004-509f-4748-8a32-3d82c5f72c2d",
+    "NombreUsuario": "usuario2",
+    "Correo": "usuario2@correo.com"
+  },
+  {
+    "Id": "7fbf0865-1ff5-46fc-880d-0e6e3f82c5db",
+    "NombreUsuario": "usuario3",
+    "Correo": "usuario3@correo.com"
+  },
+  {
+    "Id": "e3d3127b-b4ea-44b5-943a-39273e9d1e56",
+    "NombreUsuario": "usuario4",
+    "Correo": "usuario4@correo.com"
+  },
+  {
+    "Id": "d6e4e6a3-1a4d-4b98-9c75-498741ebd5b3",
+    "NombreUsuario": "usuario5",
+    "Correo": "usuario5@correo.com"
+  },
+  {
+    "Id": "c52cf4a9-734f-4eaf-b2a2-fd6cb24c0b88",
+    "NombreUsuario": "usuario6",
+    "Correo": "usuario6@correo.com"
+  },
+  {
+    "Id": "1d3f50bb-92de-4d1e-a577-30d63432c18e",
+    "NombreUsuario": "usuario7",
+    "Correo": "usuario7@correo.com"
+  },
+  {
+    "Id": "9e1b4577-6d39-419c-991b-108f58f8a1fc",
+    "NombreUsuario": "usuario8",
+    "Correo": "usuario8@correo.com"
+  },
+  {
+    "Id": "fd7d2495-2d59-4b22-a5ec-9273391d05d4",
+    "NombreUsuario": "usuario9",
+    "Correo": "usuario9@correo.com"
+  },
+  {
+    "Id": "11ab5479-089f-4b5b-8a14-d37d2b75f2cb",
+    "NombreUsuario": "usuario10",
+    "Correo": "usuario10@correo.com"
+  }
+]

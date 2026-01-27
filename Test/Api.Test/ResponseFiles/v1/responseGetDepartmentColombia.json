@@ -1,0 +1,200 @@
+[
+  {
+    "Id": "91",
+    "Name": "Amazonas",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "05",
+    "Name": "Antioquia",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "81",
+    "Name": "Arauca",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "88",
+    "Name": "Archipiélago De San Andrés, Providencia Y ",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "08",
+    "Name": "Atlántico",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "11",
+    "Name": "Bogotá, D. C.",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "13",
+    "Name": "Bolívar",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "15",
+    "Name": "Boyacá",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "17",
+    "Name": "Caldas",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "18",
+    "Name": "Caquetá",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "85",
+    "Name": "Casanare",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "19",
+    "Name": "Cauca",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "20",
+    "Name": "Cesar",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "27",
+    "Name": "Chocó",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "23",
+    "Name": "Córdoba",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "25",
+    "Name": "Cundinamarca",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "94",
+    "Name": "Guainía",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "95",
+    "Name": "Guaviare",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "41",
+    "Name": "Huila",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "44",
+    "Name": "La Guajira",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "47",
+    "Name": "Magdalena",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "50",
+    "Name": "Meta",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "52",
+    "Name": "Nariño",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "54",
+    "Name": "Norte De Santander",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "86",
+    "Name": "Putumayo",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "63",
+    "Name": "Quindío",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "66",
+    "Name": "Risaralda",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "68",
+    "Name": "Santander",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "70",
+    "Name": "Sucre",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "73",
+    "Name": "Tolima",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "76",
+    "Name": "Valle Del Cauca",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "97",
+    "Name": "Vaupés",
+    "CountryId": 1,
+    "State": 1
+  },
+  {
+    "Id": "99",
+    "Name": "Vichada",
+    "CountryId": 1,
+    "State": 1
+  }
+]

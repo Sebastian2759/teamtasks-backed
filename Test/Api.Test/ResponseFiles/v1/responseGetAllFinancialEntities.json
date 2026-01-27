@@ -1,0 +1,52 @@
+[
+  {
+    "Id": "1f44d705-1f95-4f85-b494-001122334455",
+    "CodFinancieraGd": 101,
+    "NombreFinancieraGd": "Global Finance Corp"
+  },
+  {
+    "Id": "2e55d706-2g96-5g96-c595-002233445566",
+    "CodFinancieraGd": 102,
+    "NombreFinancieraGd": "Fast Loans Inc"
+  },
+  {
+    "Id": "3g66e807-3h07-6h07-d606-003344556677",
+    "CodFinancieraGd": 103,
+    "NombreFinancieraGd": "Money Matters LLC"
+  },
+  {
+    "Id": "4h77f908-4i18-7i18-e717-004455667788",
+    "CodFinancieraGd": 104,
+    "NombreFinancieraGd": "Savings & Trust"
+  },
+  {
+    "Id": "5i88g109-5j29-8j29-f828-005566778899",
+    "CodFinancieraGd": 105,
+    "NombreFinancieraGd": "Investment Bankers Ltd"
+  },
+  {
+    "Id": "6j99h210-6k30-9k30-g939-006677889900",
+    "CodFinancieraGd": 106,
+    "NombreFinancieraGd": "Credit Solutions"
+  },
+  {
+    "Id": "7k00i311-7l41-al41-h040-007788990011",
+    "CodFinancieraGd": 107,
+    "NombreFinancieraGd": "The Lenders Group"
+  },
+  {
+    "Id": "8l11j422-8m52-bm52-i151-008899001122",
+    "CodFinancieraGd": 108,
+    "NombreFinancieraGd": "Fiscal Friends"
+  },
+  {
+    "Id": "9m22k533-9n63-cn63-j262-009900112233",
+    "CodFinancieraGd": 109,
+    "NombreFinancieraGd": "Equity Enterprise"
+  },
+  {
+    "Id": "an33l644-an74-dn74-k373-010011223344",
+    "CodFinancieraGd": 110,
+    "NombreFinancieraGd": "Capital Connect"
+  }
+]

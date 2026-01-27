@@ -1,0 +1,64 @@
+trigger:
+- develop
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  group: 'app-ag-core-back-dev'
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+
+- task: FileTransform@2
+  displayName: Replace environment variables
+  inputs:
+    folderPath: '$(System.DefaultWorkingDirectory)/Api/Api/'
+    jsonTargetFiles: 'appsettings.json'
+
+- task: NuGetToolInstaller@1
+  displayName: Install nuget tools
+
+- task: NuGetCommand@2
+  displayName: Restore NuGet Packages
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
+    vstsFeed: '2f62c01a-33ba-4984-ab0a-cf4f05b7873a'
+
+#- task: SonarQubePrepare@5
+#  inputs:
+#    SonarQube: 'Sonarqube-Autogermana'
+#    scannerMode: 'MSBuild'
+#    projectKey: 'AG.SAC.PQRSA_AG.SAC.PQRSA_0a3a0bb7-f118-4ba3-9170-8e0d0aa0ec9d'
+#    projectName: 'AG.SAC.PQRSA.Back'
+
+#- powershell: |
+#    $params = "$env:SONARQUBE_SCANNER_PARAMS" -replace '"sonar.branch.name":"[\w/,-.]*"\,?'
+#    Write-Host "##vso[task.setvariable variable=SONARQUBE_SCANNER_PARAMS]$params"
+
+- task: VSBuild@1
+  displayName: Build solution
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+#- task: SonarQubeAnalyze@5
+#  inputs:
+#    jdkversion: 'JAVA_HOME_21_X64'
+
+#- task: SonarQubePublish@5
+#  inputs:
+#    pollingTimeoutSec: '300'
+
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish artifacts'
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+    artifact: 'artifactDrop'
+    publishLocation: 'pipeline'

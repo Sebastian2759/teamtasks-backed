@@ -64,9 +64,7 @@ dotnet run --project Api/Api
 
 #script sql IMPORTANTE :
 ```bash
-dotnet restore
-dotnet build
-dotnet run --project Api/Api
+
 
 USE [TeamTasksSample]
 GO

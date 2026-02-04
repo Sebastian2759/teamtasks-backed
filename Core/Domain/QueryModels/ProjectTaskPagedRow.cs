@@ -13,10 +13,10 @@ public class ProjectTaskPagedRow
     public string AssigneeName { get; set; } = default!;
 
     public Guid IdTaskStatus { get; set; }
-    public string EstadoTarea { get; set; } = default!;
+    public string Status { get; set; } = default!;
 
     public Guid IdTaskPriority { get; set; }
-    public string Prioridad { get; set; } = default!;
+    public string Priority { get; set; } = default!;
 
     public int EstimatedComplexity { get; set; }
     public DateTime DueDate { get; set; }

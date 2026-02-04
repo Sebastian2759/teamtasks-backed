@@ -18,9 +18,25 @@ namespace Api.Controllers.v1
             => Ok(await _mediator.Send(new GetProjectsRequest(), ct));
 
         [HttpGet("{id:guid}/tasks")]
-        public async Task<IActionResult> GetProjectTasks(GetProjectTasksPagedRequest req, CancellationToken ct)
-        { 
+        public async Task<IActionResult> GetProjectTasks(
+            [FromRoute] Guid id,
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] Guid? assigneeId = null,
+            [FromQuery] Guid? status = null,
+            CancellationToken ct = default)
+        {
+            var req = new GetProjectTasksPagedRequest
+            {
+                ProjectId = id,
+                Page = page,
+                PageSize = pageSize,
+                AssigneeId = assigneeId,
+                Status = status // ✅ ahora sí se mapea
+            };
+
             return Ok(await _mediator.Send(req, ct));
         }
+
     }
 }

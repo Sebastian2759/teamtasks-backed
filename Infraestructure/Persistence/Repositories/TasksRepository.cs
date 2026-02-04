@@ -80,4 +80,18 @@ public class TasksRepository(TeamTasksSampleContext db) : RepositoryGeneric<Refe
         var total = rows.FirstOrDefault()?.TotalCount ?? 0;
         return (rows, total);
     }
+
+    public async Task<IEnumerable<ProjectTaskStatusSummaryRow>> GetProjectTaskStatusSummaryAsync(
+       Guid projectId,
+       CancellationToken ct)
+    {
+        const string sql = @"EXEC dbo.TT_SP_ProjectTaskStatusSummary @ProjectId";
+
+        var p1 = new SqlParameter("@ProjectId", projectId);
+
+        return await _db.ProjectTaskStatusSummaryRows
+            .FromSqlRaw(sql, p1)
+            .AsNoTracking()
+            .ToListAsync(ct);
+    }
 }

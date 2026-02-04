@@ -16,7 +16,7 @@ namespace Api.Controllers.v1
 
         [HttpGet("developer-workload")]
         public async Task<IActionResult> DeveloperWorkload(CancellationToken ct)
-            => Ok(await _mediator.Send(new GetDeveloperWorkloadRequest(), ct));
+            =>  Ok(await _mediator.Send(new GetDeveloperWorkloadRequest(), ct));
 
         [HttpGet("project-health")]
         public async Task<IActionResult> ProjectHealth(CancellationToken ct)

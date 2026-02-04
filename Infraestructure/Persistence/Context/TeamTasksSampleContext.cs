@@ -27,6 +27,7 @@ public sealed class TeamTasksSampleContext : DbContext
         modelBuilder.Entity<ProjectTaskPagedRow>().HasNoKey().ToView(null);
         modelBuilder.Entity<CreatedTaskRow>().HasNoKey().ToView(null);
         modelBuilder.Entity<DeveloperDelayRiskRow>().HasNoKey().ToView("VW_DeveloperDelayRisk");
+        modelBuilder.Entity<ProjectTaskStatusSummaryRow>().HasNoKey().ToView(null);
     }
 
     internal void SetModified(object entity)
@@ -44,4 +45,5 @@ public sealed class TeamTasksSampleContext : DbContext
     public DbSet<ProjectTaskPagedRow> ProjectTaskPagedRows => Set<ProjectTaskPagedRow>();
     public DbSet<CreatedTaskRow> CreatedTaskRows => Set<CreatedTaskRow>();
     public DbSet<DeveloperDelayRiskRow> DeveloperDelayRiskRows => Set<DeveloperDelayRiskRow>();
+    public DbSet<ProjectTaskStatusSummaryRow> ProjectTaskStatusSummaryRows => Set<ProjectTaskStatusSummaryRow>();
 }

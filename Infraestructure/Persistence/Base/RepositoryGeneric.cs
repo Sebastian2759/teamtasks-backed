@@ -108,4 +108,7 @@ public class RepositoryGeneric<T> : IRepositoryGeneric<T> where T : EntityBase
     {
         return _db.SaveChanges();
     }
+
+    public Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate, CancellationToken ct)
+          => _dbset.AnyAsync(predicate, ct);
 }

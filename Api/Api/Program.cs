@@ -3,9 +3,7 @@ using Infraestructure;
 using Persistence;
 using System.Reflection;
 using Asp.Versioning.Conventions;
-using Microsoft.Identity.Web;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Api.Helpers;
 using Microsoft.IdentityModel.Tokens;
 using FluentValidation;
 using MediatR;
@@ -108,7 +106,7 @@ builder.Services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationSch
     {
         OnTokenValidated = context =>
         {
-            SimulatedUserHelper.UseSimulatedUser(context, builder.Configuration);
+            //SimulatedUserHelper.UseSimulatedUser(context, builder.Configuration);
             return Task.CompletedTask;
         },
         OnAuthenticationFailed = context =>

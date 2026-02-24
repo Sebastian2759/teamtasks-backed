@@ -1,15 +1,24 @@
-﻿using Domain.QueryModels;
-namespace Domain.Contracts.Persistence;
+﻿using Domain.Base.Interface;
+using Domain.Entities;
+using Domain.QueryModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public interface ITasksRepository
+namespace Domain.Contracts.Persistence
 {
-    Task<(IReadOnlyList<ProjectTaskPagedRow> Items, int TotalCount)> GetProjectTasksPagedAsync(
-       Guid projectId,
-       Guid? idTaskStatus,
-       Guid? assigneeId,
-       int page,
-       int pageSize,
-       CancellationToken ct);
-
-    Task<CreatedTaskRow> CreateTaskAsync(CreateTaskSpParams input, CancellationToken ct);
+    public interface ITasksRepository : IRepositoryGeneric<TaskEntity>
+    {
+        Task<PagedResultQueryModel<TaskListItemQueryModel>> GetTasksPagedAsync(
+            int pageNumber,
+            int pageSize,
+            Guid? assignedUserId,
+            string? status,
+            Guid? priorityId,
+            string? tag,
+            string? search,
+            CancellationToken ct);
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using System.Text.Json;
 
 namespace Application.UseCases.TeamTasks.CreateTask;
 
@@ -6,30 +7,25 @@ public class CreateTaskValidator : AbstractValidator<CreateTaskRequest>
 {
     public CreateTaskValidator()
     {
-        RuleFor(x => x.ProjectId)
-            .NotEmpty().WithMessage("ProjectId is required.")
-            .NotEqual(Guid.Empty).WithMessage("Invalid ProjectId format.");
+        RuleFor(x => x.Title).NotEmpty().MaximumLength(200);
+        RuleFor(x => x.AssignedUserId).NotEqual(Guid.Empty);
 
-        RuleFor(x => x.AssigneeId)
-            .NotEmpty().WithMessage("AssigneeId is required.")
-            .NotEqual(Guid.Empty).WithMessage("Invalid AssigneeId format.");
+        When(x => x.PriorityId.HasValue, () =>
+        {
+            RuleFor(x => x.PriorityId!.Value).NotEqual(Guid.Empty);
+        });
 
-        RuleFor(x => x.IdTaskStatus)
-            .NotEmpty().WithMessage("IdTaskStatus is required.")
-            .NotEqual(Guid.Empty).WithMessage("Invalid IdTaskStatus format.");
+        When(x => !string.IsNullOrWhiteSpace(x.AdditionalInfo), () =>
+        {
+            RuleFor(x => x.AdditionalInfo!)
+                .Must(BeValidJson)
+                .WithMessage("AdditionalInfo must be valid JSON.");
+        });
+    }
 
-        RuleFor(x => x.IdTaskPriority)
-            .NotEmpty().WithMessage("IdTaskPriority is required.")
-            .NotEqual(Guid.Empty).WithMessage("Invalid IdTaskPriority format.");
-
-        RuleFor(x => x.Title)
-            .NotEmpty().WithMessage("Title is required.")
-            .MaximumLength(200).WithMessage("Title max length is 200.");
-
-        RuleFor(x => x.EstimatedComplexity)
-            .InclusiveBetween(1, 5).WithMessage("EstimatedComplexity must be between 1 and 5.");
-
-        RuleFor(x => x.DueDate)
-            .NotEmpty().WithMessage("DueDate is required.");
+    private static bool BeValidJson(string json)
+    {
+        try { JsonDocument.Parse(json); return true; }
+        catch { return false; }
     }
 }

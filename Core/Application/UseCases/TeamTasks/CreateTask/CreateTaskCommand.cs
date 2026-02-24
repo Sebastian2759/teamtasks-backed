@@ -1,70 +1,76 @@
 ﻿using Application.Base;
-using Application.Dtos.TeamTasks;
+using Application.Dtos;
+using Domain.Contracts.Adapter.Mapper;
 using Domain.Contracts.Persistence;
-using Domain.QueryModels;
+using Domain.Entities;
 using MediatR;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
+using static Application.Enums.Enums;
 
-namespace Application.UseCases.TeamTasks.CreateTask
+namespace Application.UseCases.TeamTasks.CreateTask;
+
+public sealed class CreateTaskCommand(
+    ITasksRepository tasksRepository,
+    IUsersRepository usersRepository,
+    IMapperAdapter mapperAdapter
+) : IRequestHandler<CreateTaskRequest, ResponseBase<CreateTaskResponse>>
 {
-    public class CreateTaskCommand(ITasksRepository tasksRepository)
-    : IRequestHandler<CreateTaskRequest, ResponseBase<CreateTaskResponse>>
+    private readonly ITasksRepository _tasksRepository = tasksRepository;
+    private readonly IUsersRepository _usersRepository = usersRepository;
+    private readonly IMapperAdapter _mapperAdapter = mapperAdapter;
+
+    public async Task<ResponseBase<CreateTaskResponse>> Handle(CreateTaskRequest request, CancellationToken cancellationToken)
     {
-        private readonly ITasksRepository _tasksRepository = tasksRepository;
+        var response = new ResponseBase<CreateTaskResponse>();
 
-        public async Task<ResponseBase<CreateTaskResponse>> Handle(CreateTaskRequest request, CancellationToken cancellationToken)
+        // negocio: usuario debe existir
+        var userExists = await _usersRepository.ExistsAsync(
+            u => u.Id == request.AssignedUserId && u.IsActive,
+            cancellationToken);
+
+        if (!userExists)
         {
-            try
-            {
-                var input = new CreateTaskSpParams
-                {
-                    ProjectId = request.ProjectId,
-                    Title = request.Title.Trim(),
-                    Description = request.Description,
-                    AssigneeId = request.AssigneeId,
-                    IdTaskStatus = request.IdTaskStatus,
-                    IdTaskPriority = request.IdTaskPriority,
-                    EstimatedComplexity = request.EstimatedComplexity,
-                    DueDate = request.DueDate.Date,
-                    CompletionDate = request.CompletionDate?.Date
-                };
-
-                var created = await _tasksRepository.CreateTaskAsync(input, cancellationToken);
-
-                return new ResponseBase<CreateTaskResponse>
-                {
-                    Data = new CreateTaskResponse
-                    {
-                        Task = new TaskDto
-                        {
-                            TaskId = created.TaskId,
-                            ProjectId = created.ProjectId,
-                            ProjectName = created.ProjectName,
-                            Title = created.Title,
-                            Description = created.Description,
-                            AssigneeId = created.AssigneeId,
-                            AssigneeName = created.AssigneeName,
-                            IdTaskStatus = created.IdTaskStatus,
-                            Status = created.EstadoTarea,
-                            IdTaskPriority = created.IdTaskPriority,
-                            Priority = created.Prioridad,
-                            EstimatedComplexity = created.EstimatedComplexity,
-                            DueDate = created.DueDate,
-                            CompletionDate = created.CompletionDate,
-                            CreatedAts = created.CreatedAts
-                        }
-                    }
-                };
-            }
-            catch (SqlException ex) when (ex.Number == 51000)
-            {
-                throw new Exception(ex.Message);
-            }
+            response.StatusCode = HttpStatusCode.BadRequest;
+            response.Message = "AssignedUserId no existe o está inactivo.";
+            response.Data = default!;
+            return response;
         }
+
+        var now = DateTime.UtcNow;
+        var pendingStatusId = Application.Constants.Constants.TaskStatusDetailIds[EnumTaskStatus.Pending];
+
+        var entity = new TaskEntity
+        {
+            Id = Guid.NewGuid(),
+            Title = request.Title.Trim(),
+            Description = request.Description?.Trim(),
+            AssignedUserId = request.AssignedUserId,
+            StatusId = pendingStatusId,
+            PriorityId = request.PriorityId,
+            AdditionalInfo = string.IsNullOrWhiteSpace(request.AdditionalInfo) ? null : request.AdditionalInfo,
+            IsActive = true,
+            CreatedAtUtc = now,
+            UpdatedAtUtc = now
+        };
+
+        try
+        {
+            _tasksRepository.Add(entity);
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
+
+        // ✅ Mapeo con adapter
+        var dto = _mapperAdapter.Map<TaskEntity, TaskCreatedDto>(entity);
+
+        response.StatusCode = HttpStatusCode.Created;
+        response.Message = "Tarea creada.";
+        response.Data = new CreateTaskResponse { Task = dto };
+
+        return response;
     }
 }

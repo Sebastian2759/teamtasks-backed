@@ -1,14 +1,9 @@
-﻿using Application.Dtos.TeamTasks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Dtos;
 
 namespace Application.UseCases.TeamTasks.CreateTask
 {
     public class CreateTaskResponse 
     {
-        public TaskDto Task { get; set; } = new();
+        public TaskCreatedDto Task { get; set; } = default!;
     }
 }

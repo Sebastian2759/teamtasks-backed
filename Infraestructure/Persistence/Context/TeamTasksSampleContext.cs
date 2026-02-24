@@ -7,9 +7,13 @@ namespace Persistence.Context;
 
 public sealed class TeamTasksSampleContext : DbContext
 {
-
     public TeamTasksSampleContext(DbContextOptions<TeamTasksSampleContext> options) : base(options){}
-
+    public DbSet<UserEntity> Users => Set<UserEntity>();
+    public DbSet<TaskEntity> Tasks => Set<TaskEntity>();
+    public DbSet<MasterDataEntity> MasterData => Set<MasterDataEntity>();
+    public DbSet<MasterDataDetailEntity> MasterDataDetail => Set<MasterDataDetailEntity>();
+    public DbSet<UserListItemQueryModel> UsersList => Set<UserListItemQueryModel>();
+    public DbSet<TaskListItemQueryModel> TasksList => Set<TaskListItemQueryModel>();
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
     }
@@ -17,33 +21,13 @@ public sealed class TeamTasksSampleContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("dbo");
-        modelBuilder.ApplyConfiguration(new ReferencialDataConfiguration());
-        modelBuilder.ApplyConfiguration(new ReferencialDataDetailsConfiguration());
-        modelBuilder.Entity<DeveloperEntity>().ToTable("Developers").HasKey(x => x.DeveloperId);
-        modelBuilder.Entity<ProjectEntity>().ToTable("Projects").HasKey(x => x.ProjectId);
-        modelBuilder.Entity<TaskEntity>().ToTable("Tasks").HasKey(x => x.TaskId);
-        modelBuilder.Entity<ReferencialDataEntity>().ToTable("TB_ReferencialData").HasKey(x => x.Id);
-        modelBuilder.Entity<ReferencialDataDetailsEntity>().ToTable("TB_ReferencialData_Details").HasKey(x => x.Id);
-        modelBuilder.Entity<ProjectTaskPagedRow>().HasNoKey().ToView(null);
-        modelBuilder.Entity<CreatedTaskRow>().HasNoKey().ToView(null);
-        modelBuilder.Entity<DeveloperDelayRiskRow>().HasNoKey().ToView("VW_DeveloperDelayRisk");
-        modelBuilder.Entity<ProjectTaskStatusSummaryRow>().HasNoKey().ToView(null);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TaskConfiguration).Assembly);
+        modelBuilder.Entity<UserListItemQueryModel>().HasNoKey();
+        modelBuilder.Entity<TaskListItemQueryModel>().HasNoKey();
     }
 
     internal void SetModified(object entity)
     {
         Entry(entity).State = EntityState.Modified;
     }
-
-    public DbSet<ReferencialDataEntity> ReferencialData { get; set; }
-    public DbSet<ReferencialDataDetailsEntity> ReferencialDataDetails { get; set; }
-    public DbSet<DeveloperEntity> Developers => Set<DeveloperEntity>();
-    public DbSet<ProjectEntity> Projects => Set<ProjectEntity>();
-    public DbSet<TaskEntity> Tasks => Set<TaskEntity>();
-    public DbSet<ReferencialDataEntity> TB_ReferencialData => Set<ReferencialDataEntity>();
-    public DbSet<ReferencialDataDetailsEntity> TB_ReferencialData_Details => Set<ReferencialDataDetailsEntity>();
-    public DbSet<ProjectTaskPagedRow> ProjectTaskPagedRows => Set<ProjectTaskPagedRow>();
-    public DbSet<CreatedTaskRow> CreatedTaskRows => Set<CreatedTaskRow>();
-    public DbSet<DeveloperDelayRiskRow> DeveloperDelayRiskRows => Set<DeveloperDelayRiskRow>();
-    public DbSet<ProjectTaskStatusSummaryRow> ProjectTaskStatusSummaryRows => Set<ProjectTaskStatusSummaryRow>();
 }

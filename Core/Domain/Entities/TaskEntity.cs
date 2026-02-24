@@ -1,20 +1,16 @@
-﻿namespace Domain.Entities;
+﻿using Domain.Base;
 
-public class TaskEntity
+namespace Domain.Entities;
+
+public sealed class TaskEntity : EntityBase
 {
-    public Guid TaskId { get; set; }
-    public Guid ProjectId { get; set; }
-    public string Title { get; set; } = default!;
+    public string Title { get; set; }
     public string? Description { get; set; }
-
-    public Guid AssigneeId { get; set; }
-
-    public Guid IdTaskStatus { get; set; }
-    public Guid IdTaskPriority { get; set; }
-
-    public int EstimatedComplexity { get; set; }
-    public DateTime DueDate { get; set; }
-    public DateTime? CompletionDate { get; set; }
-
-    public DateTime CreatedAts { get; set; }
+    public Guid AssignedUserId { get; set; }
+    public Guid StatusId { get; set; }
+    public Guid? PriorityId { get; set; }
+    public string? AdditionalInfo { get; set; }
+    public bool IsActive { get; set; }
+    public DateTime CreatedAtUtc { get; set; }
+    public DateTime UpdatedAtUtc { get; set; }
 }

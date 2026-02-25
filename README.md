@@ -73,6 +73,8 @@ dotnet run --project Api
   - `MasterData` (Master) + `MasterDataDetail` (Detail)
   - Status/Priority viven en **MasterDataDetail**
   - Enums + diccionario de GUIDs fijos para estabilidad.
+- **Test**
+  - Test de Uses Cases de Actualizar Estado tarea y crear usuario.
 - **Paginación & filtros**
   - Listados implementados con SPs (`sp_*_get_paged`) por performance y control de filtros.
 - **Triggers SQL Server**

@@ -4,6 +4,7 @@
 
 ### Requisitos
 - .NET SDK 8 (o el que esté configurado en el `global.json`/solution)
+- Haber Hido al repositorio ResourceProjectTask donde se encontrará scripts y sp's para este proceso.
 - SQL Server (LocalDB o instancia local/remota)
 - (Opcional) SSMS / Azure Data Studio
 
